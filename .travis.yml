@@ -106,9 +106,9 @@ before_install:
 install:
 - |
   set -ex
-  if [ `uname` = "Darwin" ]
+  if [ `uname` -ne "Darwin" ]
   then
-  else sudo apt-get install -y jq pwgen
+    sudo apt-get install -y jq pwgen
   fi
   stack --no-terminal --install-ghc $ARGS test --bench --only-dependencies
   set +ex
