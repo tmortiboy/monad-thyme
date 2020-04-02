@@ -21,7 +21,7 @@ jobs:
     name: "Linux LTS 15"
     # addons: {apt: {packages: [libgmp-dev]}}
 
-  - env: ARGS="--resolver lts-14 --stack-yaml stack-14.yaml"
+  - env: ARGS="--resolver lts-14"
     name: "Linux LTS 14"
     # addons: {apt: {packages: [libgmp-dev]}}
 
@@ -57,7 +57,7 @@ jobs:
     name: "OSX LTS 15"
     os: osx
 
-  - env: ARGS="--resolver lts-14 --stack-yaml stack-14.yaml"
+  - env: ARGS="--resolver lts-14"
     name: "OSX LTS 14"
     os: osx
 
@@ -106,7 +106,7 @@ before_install:
 install:
 - |
   set -ex
-  if [ `uname` -ne "Darwin" ]
+  if [ `uname` != "Darwin" ]
   then
     sudo apt-get install -y jq pwgen
   fi
