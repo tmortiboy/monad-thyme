@@ -29,11 +29,11 @@ jobs:
     name: "Linux LTS 13"
     # addons: {apt: {packages: [libgmp-dev]}}
 
-  - env: ARGS="--resolver lts-12"
+  - env: ARGS="--resolver lts-12 --stack-yaml stack-12.yaml"
     name: "Linux LTS 12"
     # addons: {apt: {packages: [libgmp-dev]}}
 
-  - env: ARGS="--resolver lts-11"
+  - env: ARGS="--resolver lts-11 --stack-yaml stack-11.yaml"
     name: "Linux LTS 11"
     # addons: {apt: {packages: [libgmp-dev]}}
 
@@ -65,11 +65,11 @@ jobs:
     name: "OSX LTS 13"
     os: osx
 
-  - env: ARGS="--resolver lts-12"
+  - env: ARGS="--resolver lts-12 --stack-yaml stack-12.yaml"
     name: "OSX LTS 12"
     os: osx
 
-  - env: ARGS="--resolver lts-11"
+  - env: ARGS="--resolver lts-11 --stack-yaml stack-11.yaml"
     name: "OSX LTS 11"
     os: osx
 
@@ -87,6 +87,13 @@ jobs:
 
   allow_failures:
   - env: ARGS="--resolver nightly"
+
+  - stage: deploy
+    if: tag =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+    script:
+    - |
+      jq -n --arg username "$HACKAGE_USERNAME" --arg password "$HACKAGE_PASSWORD" '{username: $username, password: $password}' > "~/.stack/upload/credentials.json"
+      stack upload .
 
 before_install:
 - |
@@ -116,5 +123,5 @@ install:
 script:
 - |
   set -ex
-  stack --no-terminal $ARGS test --bench --no-run-benchmarks --haddock --no-haddock-deps
+  stack --no-terminal $ARGS test --pedantic --bench --no-run-benchmarks --haddock --no-haddock-deps
   set +ex

@@ -1,0 +1,7 @@
+resolver: lts-11.22
+
+packages:
+  - .
+
+extra-deps:
+  - thyme-0.3.5.5@sha256:a723192fd26240b38589029fbc05fc25ba7c0b105042601e554db18e69860931,4716

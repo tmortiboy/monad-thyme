@@ -1,7 +1,12 @@
 name:                monad-thyme
 version:             0.1.0.0
+synopsis:            Type class for monads which carry the notion of the current time.
+description:         Please see the README on GitHub at <https://github.com/tmortiboy/monad-thyme#readme>
+category:            Control
 github:              tmortiboy/monad-thyme
-license:             BSD3
+homepage:            https://github.com/tmortiboy/monad-thyme
+license:             MIT
+license-file:        LICENSE
 author:              Tom Mortiboy
 maintainer:          Tom Mortiboy
 copyright:           2020 Tom Mortiboy
@@ -10,7 +15,6 @@ extra-source-files:
 - README.md
 - ChangeLog.md
 
-description:         Please see the README on GitHub at <https://github.com/tmortiboy/monad-thyme#readme>
 
 dependencies:
 - base >= 4.7 && < 5
