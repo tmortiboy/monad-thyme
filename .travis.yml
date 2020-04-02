@@ -85,15 +85,15 @@ jobs:
     name: "OSX Nightly"
     os: osx
 
-  allow_failures:
-  - env: ARGS="--resolver nightly"
-
   - stage: deploy
     if: tag =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
     script:
     - |
       jq -n --arg username "$HACKAGE_USERNAME" --arg password "$HACKAGE_PASSWORD" '{username: $username, password: $password}' > "~/.stack/upload/credentials.json"
       stack upload .
+
+  allow_failures:
+  - env: ARGS="--resolver nightly"
 
 before_install:
 - |
