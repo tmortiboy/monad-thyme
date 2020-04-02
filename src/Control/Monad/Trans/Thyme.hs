@@ -17,7 +17,7 @@ import           Data.List.NonEmpty (NonEmpty(..))
 import qualified Data.List.NonEmpty as NE
 import           Data.Thyme (UTCTime)
 
-import           Control.Monad.Thyme (MonadTime(..))
+import           Control.Monad.Thyme.Class (MonadTime(..))
 
 -- | A mock time transformer monad which adds a collection of 'UTCTime's to the given monad,
 -- which are used by 'currentTime'.

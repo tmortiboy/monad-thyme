@@ -1,10 +1,10 @@
-module Control.Monad.ThymeSpec (spec) where
+module Control.Monad.Thyme.ClassSpec (spec) where
 
 import           Control.Monad.Reader (runReaderT)
 import           Control.Monad.State (evalStateT)
 import           Test.Hspec
 
-import           Control.Monad.Thyme
+import           Control.Monad.Thyme.Class
 
 spec :: Spec
 spec =

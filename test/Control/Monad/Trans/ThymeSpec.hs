@@ -6,7 +6,6 @@ import           Test.Hspec.QuickCheck (prop)
 import           Test.QuickCheck
 
 import           Control.Monad.Thyme
-import           Control.Monad.Trans.Thyme
 
 spec :: Spec
 spec = do
