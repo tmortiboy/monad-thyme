@@ -14,82 +14,74 @@ jobs:
   include:
 
   - env: ARGS=""
-    name: "Linux Default"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux Default"
 
   - env: ARGS="--resolver lts-15"
-    name: "Linux LTS 15"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 15"
 
   - env: ARGS="--resolver lts-14"
-    name: "Linux LTS 14"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 14"
 
   - env: ARGS="--resolver lts-13"
-    name: "Linux LTS 13"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 13"
 
   - env: ARGS="--resolver lts-12 --stack-yaml stack-12.yaml"
-    name: "Linux LTS 12"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 12"
 
   - env: ARGS="--resolver lts-11 --stack-yaml stack-11.yaml"
-    name: "Linux LTS 11"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 11"
 
   - env: ARGS="--resolver lts-10"
-    name: "Linux LTS 10"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 10"
 
   - env: ARGS="--resolver lts-9"
-    name: "Linux LTS 9"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux lts 9"
 
   - env: ARGS="--resolver nightly"
-    name: "Linux Nightly"
-    # addons: {apt: {packages: [libgmp-dev]}}
+    name: "linux nightly"
 
   - env: ARGS=""
-    name: "OSX Default"
+    name: "osx Default"
     os: osx
 
   - env: ARGS="--resolver lts-15"
-    name: "OSX LTS 15"
+    name: "osx lts 15"
     os: osx
 
   - env: ARGS="--resolver lts-14"
-    name: "OSX LTS 14"
+    name: "osx lts 14"
     os: osx
 
   - env: ARGS="--resolver lts-13"
-    name: "OSX LTS 13"
+    name: "osx lts 13"
     os: osx
 
   - env: ARGS="--resolver lts-12 --stack-yaml stack-12.yaml"
-    name: "OSX LTS 12"
+    name: "osx lts 12"
     os: osx
 
   - env: ARGS="--resolver lts-11 --stack-yaml stack-11.yaml"
-    name: "OSX LTS 11"
+    name: "osx lts 11"
     os: osx
 
   - env: ARGS="--resolver lts-10"
-    name: "OSX LTS 10"
+    name: "osx lts 10"
     os: osx
 
   - env: ARGS="--resolver lts-9"
-    name: "OSX LTS 9"
+    name: "osx lts 9"
     os: osx
 
   - env: ARGS="--resolver nightly"
-    name: "OSX Nightly"
+    name: "osx nightly"
     os: osx
 
   - stage: deploy
     if: tag =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
     script:
     - |
-      jq -n --arg username "$HACKAGE_USERNAME" --arg password "$HACKAGE_PASSWORD" '{username: $username, password: $password}' > "~/.stack/upload/credentials.json"
+      mkdir -p "$HOME/.stack/upload"
+      jq -n --arg username "$HACKAGE_USERNAME" --arg password "$HACKAGE_PASSWORD" '{username: $username, password: $password}' > "$HOME/.stack/upload/credentials.json"
       stack upload .
 
   allow_failures:
