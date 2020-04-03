@@ -1,20 +1,19 @@
 name:                monad-thyme
 version:             0.1.0.0
 synopsis:            Type class for monads which carry the notion of the current time.
-description:         Please see the README on GitHub at <https://github.com/tmortiboy/monad-thyme#readme>
-category:            Control
+description:         A MonadTime type class for monads which carry the notion of the current time.
+                     The type class has instances for IO and a transformer TimeT which can be used
+                     for mocking purposes when testing.
+category:            Control, Time
 github:              tmortiboy/monad-thyme
 homepage:            https://github.com/tmortiboy/monad-thyme
+bug-reports:         https://github.com/tmortiboy/monad-thyme/issues
 license:             MIT
 license-file:        LICENSE
 author:              Tom Mortiboy
-maintainer:          Tom Mortiboy
-copyright:           2020 Tom Mortiboy
-
-extra-source-files:
-- README.md
-- ChangeLog.md
-
+maintainer:          tom.mortiboy+hackage@gmail.com
+copyright:           Copyright (c) 2020 Tom Mortiboy
+extra-source-files:  README.md, ChangeLog.md
 
 dependencies:
 - base >= 4.7 && < 5

@@ -14,7 +14,7 @@ jobs:
   include:
 
   - env: ARGS=""
-    name: "linux Default"
+    name: "linux default"
 
   - env: ARGS="--resolver lts-15"
     name: "linux lts 15"
@@ -41,7 +41,7 @@ jobs:
     name: "linux nightly"
 
   - env: ARGS=""
-    name: "osx Default"
+    name: "osx default"
     os: osx
 
   - env: ARGS="--resolver lts-15"
